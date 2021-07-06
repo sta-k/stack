@@ -1,9 +1,8 @@
 
 
 <main class="px-3">
-<h1>Welcome to sta-k.com</h1>
-<p class="lead">  
-Find Local Stores around Vadakkencherry. sta-k.com app shows local stores of various categories accepting orders and delivering around vadakkencherry.</p>
+<h1>sta-k.com</h1>
+<p class="lead">Log in</p>
 </main>
 <div class="row">
 	<div class="col-md-4">
@@ -16,7 +15,15 @@ Find Local Stores around Vadakkencherry. sta-k.com app shows local stores of var
 					<br>
 					<input type="password" name="password" placeholder="Password" [(ngModel)]="user.password"
 					    required class="form-control" /><br>
-					<button class="btn btn-primary" [disabled]="loading" type="submit">Log in</button>
+					<div *ngIf="errors" class="alert alert-danger">
+						<ul>
+							<li *ngFor="let key of Object.keys(errors.error)">{{key}} - {{errors.error[key]}}</li>
+						</ul>
+					</div>
+					<button class="btn btn-primary" *ngIf="!loading" type="submit">Log in</button>
+				  	<button class="btn btn-primary" type="button" *ngIf="loading" disabled>
+					  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+					</button>
 				</form>
 			</div>
 		</div>

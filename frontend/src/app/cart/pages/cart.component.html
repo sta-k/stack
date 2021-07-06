@@ -1,0 +1,48 @@
+
+<ul class="nav nav-tabs m-2">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Cart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="'/order'">Orders</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="'/logout'">Log Out</a>
+  </li>
+</ul>
+
+<div class="row">
+<div class="col-md-6 col-12">
+<!-- <div class="card m-2">
+	<div class="card-body"> -->
+	<h4>Your Cart({{cartArray?.length || '0'}}):</h4>
+	<form [formGroup]="cartForm">
+		<input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && f.product.errors}" formControlName="product" placeholder="Product" aria-label="Product">
+
+		<div class="row mt-2">
+		  <div class="col-4">
+		    <input type="number" class="form-control" formControlName="quantity" placeholder="Qty" aria-label="Qty" [ngClass]="{'is-invalid': submitted && f.quantity.errors}">
+		  </div>
+		  <div class="col-3">
+		  	<button class="btn btn-primary" *ngIf="!loading.add" (click)="onAdd()">Add</button>
+		  	<button class="btn btn-primary" type="button" *ngIf="loading.add" disabled>
+			  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+			</button>
+		  </div>
+		  <div class="col-5"><button class="btn btn-dark" type="button" [disabled]="loading.order" (click)="createOrder()">Order</button></div>
+		</div>
+		<pre>{{errors|json}}</pre>
+	</form>
+	<hr>
+	<!-- https://jsfiddle.net/uLxs3qgr/ -->
+	<div class="list-group">
+	  <label class="list-group-item d-flex justify-content-between" *ngFor="let item of cartArray">
+	    <button class="btn btn-sm btn-danger" (click)="delete(item.id)" [disabled]="loading.delete">x</button>
+	    {{item.product}}
+	    <span class="badge bg-primary">{{item.quantity}}</span>
+	  </label>
+	</div>
+</div>
+</div>
+
+

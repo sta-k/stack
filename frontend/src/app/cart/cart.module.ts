@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { CartRoutingModule } from './cart-routing.module';
-import { CartComponent } from './cart.component';
+import { CartComponent } from './components/cart.component';
+import { OrderComponent } from './components/order.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -12,7 +14,8 @@ import { CartComponent } from './cart.component';
     CartRoutingModule,
   ],
   declarations: [
-    CartComponent
+    CartComponent,
+    OrderComponent,
     ]
 })
 export class CartModule { }

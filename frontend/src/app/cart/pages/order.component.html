@@ -1,0 +1,31 @@
+<ul class="nav nav-tabs m-2">
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="'/cart'">Cart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Orders</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="'/logout'">Log Out</a>
+  </li>
+</ul>
+
+
+<div class="row">
+<div class="col-md-6 col-12">
+	<h4>Your Orders:</h4>
+	<div class="list-group">
+	  <a class="list-group-item list-group-item-action" [ngClass]="{'active': item.status<3}" *ngFor="let item of orderData">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">#{{item.id}} <small>{{item.date|date:'medium'}}</small></h5>
+	      <small>Rs: {{item.total}}</small>
+	    </div>
+	    
+	    <small *ngFor="let orderitem of item.items">{{orderitem.product}}({{orderitem.quantity}})|</small>
+	    <div class="progress" style="height: 5px;" *ngIf="item.status<3">
+		  <div class="progress-bar bg-danger" role="progressbar" style="width: {{item.status * 25}}%;" aria-valuenow="{{item.status * 25}}" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+	  </a>
+	</div>
+</div>
+</div>

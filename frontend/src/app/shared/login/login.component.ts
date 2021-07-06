@@ -11,7 +11,8 @@ export class LoginComponent implements OnInit {
 	loading = false;
   returnUrl: string;
   user: any = {};
-
+  errors:any;
+  Object = Object;
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          console.table(error.error);
+          this.errors = error;
           this.loading = false;
         }
       );

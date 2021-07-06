@@ -20,4 +20,13 @@ export class CartService {
   remove(id: number) {
     return this.http.delete(`${this.baseUrl}${id}/`);
   }
+
+  order() {
+    return this.http.post('/api/order/',{});
+  }
+
+  // ----------------------- Order Services -------------------- //
+  getOrders() {
+    return this.http.get('/api/order/');
+  }
 }
