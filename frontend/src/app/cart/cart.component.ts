@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormArray, FormBuilder, Validators} from '@angular/forms';
 import {CartService} from './cart.service';
 
 @Component({
@@ -7,36 +8,43 @@ import {CartService} from './cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  cartForm = this.fb.group({
+    id: [''],
+    product: ['', Validators.required],
+    quantity: ['', Validators.required],
+  });
 
+  cartArray: any[];
+  errors:any;
+  constructor(private cartService: CartService, private fb: FormBuilder) { }
 
-  todoArray: any[];
-  constructor(private toDoSer: CartService) { }
-
-  ngOnInit() {
-    this.toDoSer.getItems()
-    .subscribe(item => {
-      this.todoArray = [];
-      item.forEach(element => {
-        var x = element.payload.toJSON();
-        x["$key"] = element.key;
-        this.todoArray.push(x);
-      })
-
-      this.todoArray.sort((a,b) => {
-        return a.isChecked - b.isChecked;
-      })
+  getItems() {
+    this.cartService.getItems()
+    .subscribe(items => {
+      this.cartArray = items;
     });
   }
+  ngOnInit() {
+    this.getItems();
+  }
 
-  onAdd(itemTitle){
-    
-    this.toDoSer.add(itemTitle.value).subscribe();
-    itemTitle.value = null;
+  onAdd(){
+
+    if (this.cartForm.invalid) {
+      return;
+    }
+    this.cartService.add(this.cartForm.value).subscribe((response) => {
+        this.getItems();
+      }, // success
+      error => {
+        this.errors = error;
+      }
+    );
   }
 
 
-  delete($key: number){
-    this.toDoSer.remove($key).subscribe();
+  delete(id: number){
+    this.cartService.remove(id).subscribe((response) => {this.getItems()});
   }
 
 }
