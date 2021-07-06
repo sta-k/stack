@@ -1,0 +1,29 @@
+<button [routerLink]="'/logout'" style="color:slategray;font-size: 12px;">
+  <i class="fa fa-sign-out pull-right" style="padding-top:15px;"></i>Log Out
+</button>
+
+<div class="jumbotron" style="padding: 25px 0px">
+    <h4 class="text-center">
+        Things to do:
+    </h4>
+</div>
+
+<div class="input-group">
+    <input type="text" id="name" name="name" class="form-control" #itemTitle autocomplete="off" placeholder="Add a task.">
+    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
+        <i class="fa fa-plus-circle fa-2x"></i>
+    </div>
+    
+</div>
+
+<div style="margin: 30px 0px;">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of todoArray">
+            
+                {{item.title}}
+            <span class="hover-class text-danger pull-right" (click)="delete(item.$key)">
+                <i class="fa fa-trash-o fa-lg"></i>
+            </span>
+        </li>
+    </ul>
+</div>
