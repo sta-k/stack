@@ -1,11 +1,25 @@
-<form (ngSubmit)="onLogin()">
 
-	<input type="text" name="username" placeholder="Username" [(ngModel)]="user.username" 
-	required autofocus class="form-control" />
-	<br>
-	<input type="password" name="password" placeholder="Password" [(ngModel)]="user.password"
-	    required class="form-control" />
-	<button class="btn btn-primary btn-block  submit" [disabled]="loading" type="submit">
-	<i class="fa fa-sign-in"></i> Log in
-	</button>
-</form>
+
+<main class="px-3">
+<h1>Welcome to sta-k.com</h1>
+<p class="lead">  
+Find Local Stores around Vadakkencherry. sta-k.com app shows local stores of various categories accepting orders and delivering around vadakkencherry.</p>
+</main>
+<div class="row">
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-body">
+				<form (ngSubmit)="onLogin()">
+
+					<input type="text" name="username" placeholder="Username" [(ngModel)]="user.username" 
+					required autofocus class="form-control" />
+					<br>
+					<input type="password" name="password" placeholder="Password" [(ngModel)]="user.password"
+					    required class="form-control" /><br>
+					<button class="btn btn-primary" [disabled]="loading" type="submit">Log in</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
