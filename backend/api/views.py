@@ -19,8 +19,8 @@ class CartListAPIView(viewsets.ModelViewSet):
         return self.queryset.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        import time
-        time.sleep(2)
+        # import time
+        # time.sleep(2)
         req = serializer.context['request']
         serializer.save(user=req.user)
 
