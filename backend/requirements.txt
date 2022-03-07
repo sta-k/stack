@@ -3,3 +3,4 @@ python-decouple
 djangorestframework
 django-cors-headers
 requests
+psycopg2
