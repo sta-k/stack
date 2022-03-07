@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverUrl: 'https://static.stackschools.com',
+  serverUrl: 'https://stack.stackschools.com',
 };
